@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiMark Pro - Complete Digital Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem 5%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Services Category */
+        .services-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-detailed-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-detailed-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .service-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-body {
+            padding: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .price-tag {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .order-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .order-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* Hiring Section */
+        .hiring-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .hiring-section h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .job-card {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .job-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .apply-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #764ba2;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Order History */
+        .order-history {
+            margin-top: 2rem;
+        }
+
+        .order-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-status {
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* User Info */
+        .user-info {
+            display: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .user-info.active {
+            display: block;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        /* Service Modal */
+        .service-modal .modal-content {
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">DigiMark Pro</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li class="dropdown">
+                    <a href="#services">Services ▼</a>
+                    <div class="dropdown-content">
+                        <a href="#video-editing">Video Editing</a>
+                        <a href="#social-media">Social Media Management</a>
+                        <a href="#ai-tools">AI Tools</a>
+                        <a href="#app-dev">App Development</a>
+                        <a href="#web-design">Website Design</a>
+                        <a href="#freelancing">Freelancing Services</a>
+                        <a href="#political">Political Services</a>
+                        <a href="#shoots">Indoor/Outdoor Shoots</a>
+                        <a href="#graphic-design">Graphic Design</a>
+                        <a href="#seo">SEO Services</a>
+                        <a href="#content-writing">Content Writing</a>
+                        <a href="#marketing">Digital Marketing</a>
+                    </div>
+                </li>
+                <li><a href="#hiring">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="loginBtn">Login</a></li>
+                <li><span id="userDisplay" class="user-info"></span></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to DigiMark Pro</h2>
+            <div id="loginMessage"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Login</button>
+            </form>
+            <p style="margin-top: 1rem; text-align: center;">
+                Demo: admin@digimark.com / password123
+            </p>
+        </div>
+    </div>
+
+    <!-- Service Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2 id="modalServiceTitle">Order Service</h2>
+            <div id="orderMessage"></div>
+            <form id="orderForm">
+                <input type="hidden" id="serviceName" name="serviceName">
+                <div class="form-group">
+                    <label for="customerName">Your Name</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email</label>
+                    <input type="email" id="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Phone</label>
+                    <input type="tel" id="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="servicePackage">Select Package</label>
+                    <select id="servicePackage" required>
+                        <option value="">Choose a package</option>
+                        <option value="basic">Basic - Starter Package</option>
+                        <option value="standard">Standard - Most Popular</option>
+                        <option value="premium">Premium - Complete Solution</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="projectDetails">Project Details</label>
+                    <textarea id="projectDetails" rows="4" placeholder="Tell us about your requirements..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Range ($)</label>
+                    <select id="budget" required>
+                        <option value="">Select budget range</option>
+                        <option value="100-500">$100 - $500</option>
+                        <option value="500-1000">$500 - $1000</option>
+                        <option value="1000-5000">$1000 - $5000</option>
+                        <option value="5000+">$5000+</option>
+                    </select>
+                </div>
+                <button type="submit" class="order-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <h1>Complete Digital Solutions Agency</h1>
+                <p>One stop solution for all your digital needs - From Video Editing to App Development</p>
+                <a href="#services" class="btn">Explore Services</a>
+            </section>
+
+            <!-- Dashboard -->
+            <div class="dashboard" id="dashboard">
+                <h2>Welcome, <span id="userName"></span>!</h2>
+                <p>Your Digital Services Dashboard</p>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3 id="activeOrders">0</h3>
+                        <p>Active Orders</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="completedOrders">0</h3>
+                        <p>Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalSpent">$0</h3>
+                        <p>Total Spent</p>
+                    </div>
+                </div>
+
+                <h3>Your Order History</h3>
+                <div class="order-history" id="orderHistory">
+                    <!-- Orders will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Video Editing Services -->
+            <section id="video-editing" class="services-category">
+                <h2 class="category-title">🎬 Video Editing Services</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>YouTube Video Editing</h3>
+                            <p>Professional YouTube content</p>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>4K Video Editing</li>
+                                <li>Color Grading</li>
+                                <li>Sound Design</li>
+                                <li>Custom Thumbnails</li>
+                                <li>Subtitles & Captions</li>
+                                <li>End Screens & Cards</li>
+                            </ul>
+                            <div class="price-tag">$299 - $999</div>
+                            <p class="price-note">*Price depends on video length</p>
+                            <button class="order-btn" onclick="openOrderModal('YouTube Video Editing')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Instagram Reels Editing</h3>
+                            <p>Viral ready short videos</p>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Trendy Transitions</li>
+                                <li>Music Sync</li>
+                                <li>Text Animations</li>
+                                <li>Filters & Effects</li>
+                                <li>Hashtag Research</li>
+                                <li>Caption Writing</li>
+                            </ul>
+                            <div class="price-tag">$49 - $199</div>
+                            <p class="price-note">Per reel</p>
+                            <button class="order-btn" onclick="openOrderModal('Instagram Reels Editing')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Corporate Video Editing</h3>
+                            <p>Professional business videos</p>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Company Profile Videos</li>
+                                <li>Product Demos</li>
+                                <li>Testimonial Videos</li>
+                                <li>Training Videos</li>
+                                <li>Motion Graphics</li>
+                                <li>Logo Animations</li>
+                            </ul>
+                            <div class="price-tag">$499 - $1999</div>
+                            <p class="price-note">Custom quotes available</p>
+                            <button class="order-btn" onclick="openOrderModal('Corporate Video Editing')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Ad Videos Editing</h3>
+                            <p>Conversion-focused ads</p>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Facebook Ads Videos</li>
+                                <li>Instagram Ads</li>
+                                <li>YouTube Ads</li>
+                                <li>TikTok Ads</li>
+                                <li>Call to Action</li>
+                                <li>A/B Testing Ready</li>
+                            </ul>
+                            <div class="price-tag">$199 - $599</div>
+                            <p class="price-note">Per ad video</p>
+                            <button class="order-btn" onclick="openOrderModal('Ad Videos Editing')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Media Management -->
+            <section id="social-media" class="services-category">
+                <h2 class="category-title">📱 Social Media Management</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Instagram Management</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Daily Posts (2-3 posts)</li>
+                                <li>Stories (4-5 daily)</li>
+                                <li>Engagement Boosting</li>
+                                <li>Hashtag Strategy</li>
+                                <li>Monthly Analytics</li>
+                                <li>Competitor Analysis</li>
+                            </ul>
+                            <div class="price-tag">$399/month</div>
+                            <button class="order-btn" onclick="openOrderModal('Instagram Management')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Facebook Page Management</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Daily Posts</li>
+                                <li>Community Management</li>
+                                <li>Ad Campaign Setup</li>
+                                <li>Page Optimization</li>
+                                <li>Insights Reporting</li>
+                                <li>Message Responses</li>
+                            </ul>
+                            <div class="price-tag">$349/month</div>
+                            <button class="order-btn" onclick="openOrderModal('Facebook Management')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>LinkedIn Marketing</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Profile Optimization</li>
+                                <li>Content Strategy</li>
+                                <li>Network Building</li>
+                                <li>Lead Generation</li>
+                                <li>B2B Connections</li>
+                                <li>Industry Articles</li>
+                            </ul>
+                            <div class="price-tag">$449/month</div>
+                            <button class="order-btn" onclick="openOrderModal('LinkedIn Marketing')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Tools Section -->
+            <section id="ai-tools" class="services-category">
+                <h2 class="category-title">🤖 AI Tools & Services</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>AI Content Generation</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Blog Posts (SEO Optimized)</li>
+                                <li>Social Media Captions</li>
+                                <li>Product Descriptions</li>
+                                <li>Email Newsletters</li>
+                                <li>Ad Copy</li>
+                                <li>Video Scripts</li>
+                            </ul>
+                            <div class="price-tag">$199 - $999</div>
+                            <p class="price-note">Based on word count</p>
+                            <button class="order-btn" onclick="openOrderModal('AI Content Generation')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>AI Image Generation</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Custom Artwork</li>
+                                <li>Product Images</li>
+                                <li>Social Media Graphics</li>
+                                <li>Logo Concepts</li>
+                                <li>Background Removal</li>
+                                <li>Image Enhancement</li>
+                            </ul>
+                            <div class="price-tag">$49 - $399</div>
+                            <p class="price-note">Per image/project</p>
+                            <button class="order-btn" onclick="openOrderModal('AI Image Generation')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>AI Video Creation</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>AI Avatars</li>
+                                <li>Text to Video</li>
+                                <li>Voice Synthesis</li>
+                                <li>Auto Subtitles</li>
+                                <li>Scene Generation</li>
+                                <li>Multiple Languages</li>
+                            </ul>
+                            <div class="price-tag">$299 - $1499</div>
+                            <button class="order-btn" onclick="openOrderModal('AI Video Creation')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- App Development -->
+            <section id="app-dev" class="services-category">
+                <h2 class="category-title">📱 App Development</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>iOS App Development</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Swift/SwiftUI Development</li>
+                                <li>App Store Optimization</li>
+                                <li>UI/UX Design</li>
+                                <li>Push Notifications</li>
+                                <li>In-App Purchases</li>
+                                <li>App Analytics</li>
+                            </ul>
+                            <div class="price-tag">$2999 - $9999</div>
+                            <button class="order-btn" onclick="openOrderModal('iOS App Development')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Android App Development</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Kotlin/Java Development</li>
+                                <li>Play Store Optimization</li>
+                                <li>Material Design</li>
+                                <li>Firebase Integration</li>
+                                <li>Offline Support</li>
+                                <li>Crash Analytics</li>
+                            </ul>
+                            <div class="price-tag">$2499 - $8999</div>
+                            <button class="order-btn" onclick="openOrderModal('Android App Development')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Cross-Platform Apps</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>React Native</li>
+                                <li>Flutter Development</li>
+                                <li>Single Codebase</li>
+                                <li>Native Performance</li>
+                                <li>Faster Development</li>
+                                <li>Cost Effective</li>
+                            </ul>
+                            <div class="price-tag">$3999 - $12999</div>
+                            <button class="order-btn" onclick="openOrderModal('Cross-Platform App Development')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Website Design -->
+            <section id="web-design" class="services-category">
+                <h2 class="category-title">💻 Website Design & Development</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Business Website</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Custom Design</li>
+                                <li>5-10 Pages</li>
+                                <li>Mobile Responsive</li>
+                                <li>SEO Optimized</li>
+                                <li>Contact Forms</li>
+                                <li>Google Maps</li>
+                            </ul>
+                            <div class="price-tag">$999 - $2999</div>
+                            <button class="order-btn" onclick="openOrderModal('Business Website')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>E-Commerce Website</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Product Catalog</li>
+                                <li>Shopping Cart</li>
+                                <li>Payment Integration</li>
+                                <li>Order Management</li>
+                                <li>Inventory System</li>
+                                <li>Customer Accounts</li>
+                            </ul>
+                            <div class="price-tag">$1999 - $4999</div>
+                            <button class="order-btn" onclick="openOrderModal('E-Commerce Website')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Landing Pages</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>High Converting</li>
+                                <li>A/B Testing Ready</li>
+                                <li>Lead Capture Forms</li>
+                                <li>Analytics Setup</li>
+                                <li>Fast Loading</li>
+                                <li>Mobile Optimized</li>
+                            </ul>
+                            <div class="price-tag">$399 - $999</div>
+                            <button class="order-btn" onclick="openOrderModal('Landing Page')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Freelancing Services -->
+            <section id="freelancing" class="services-category">
+                <h2 class="category-title">👨‍💻 Freelancing Services</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Virtual Assistant</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Email Management</li>
+                                <li>Calendar Management</li>
+                                <li>Data Entry</li>
+                                <li>Research Tasks</li>
+                                <li>Customer Support</li>
+                                <li>Document Preparation</li>
+                            </ul>
+                            <div class="price-tag">$15-30/hour</div>
+                            <button class="order-btn" onclick="openOrderModal('Virtual Assistant')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Data Entry & Processing</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Excel/Sheets Work</li>
+                                <li>Data Cleaning</li>
+                                <li>Database Management</li>
+                                <li>Document Conversion</li>
+                                <li>Data Mining</li>
+                                <li>Report Generation</li>
+                            </ul>
+                            <div class="price-tag">$10-25/hour</div>
+                            <button class="order-btn" onclick="openOrderModal('Data Entry')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Translation Services</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Document Translation</li>
+                                <li>Website Localization</li>
+                                <li>Video Subtitles</li>
+                                <li>Audio Transcription</li>
+                                <li>Proofreading</li>
+                                <li>Multiple Languages</li>
+                            </ul>
+                            <div class="price-tag">$0.10-0.30/word</div>
+                            <button class="order-btn" onclick="openOrderModal('Translation Services')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Political Services -->
+            <section id="political" class="services-category">
+                <h2 class="category-title">🗳️ Political Campaign Services</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Campaign Management</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Strategy Planning</li>
+                                <li>Voter Outreach</li>
+                                <li>Volunteer Coordination</li>
+                                <li>Event Management</li>
+                                <li>Fundraising Support</li>
+                                <li>Campaign Analytics</li>
+                            </ul>
+                            <div class="price-tag">Custom Pricing</div>
+                            <button class="order-btn" onclick="openOrderModal('Political Campaign Management')">Contact Us</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Social Media for Politics</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Content Creation</li>
+                                <li>Community Management</li>
+                                <li>Live Event Coverage</li>
+                                <li>Ad Campaigns</li>
+                                <li>Crisis Management</li>
+                                <li>Engagement Strategy</li>
+                            </ul>
+                            <div class="price-tag">$999/month</div>
+                            <button class="order-btn" onclick="openOrderModal('Political Social Media')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Campaign Website</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Donation Integration</li>
+                                <li>Volunteer Signup</li>
+                                <li>Event Calendar</li>
+                                <li>Newsletter System</li>
+                                <li>Voter Registration</li>
+                                <li>Multilingual Support</li>
+                            </ul>
+                            <div class="price-tag">$1999 - $4999</div>
+                            <button class="order-btn" onclick="openOrderModal('Political Campaign Website')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Indoor/Outdoor Shoots -->
+            <section id="shoots" class="services-category">
+                <h2 class="category-title">📸 Indoor & Outdoor Shoots</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Product Photography</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Studio Setup</li>
+                                <li>Multiple Angles</li>
+                                <li>Editing Included</li>
+                                <li>Background Options</li>
+                                <li>Lifestyle Shots</li>
+                                <li>Catalog Ready</li>
+                            </ul>
+                            <div class="price-tag">$199 - $999</div>
+                            <p class="price-note">Per session</p>
+                            <button class="order-btn" onclick="openOrderModal('Product Photography')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Corporate Events</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Conference Coverage</li>
+                                <li>Team Photos</li>
+                                <li>Speaker Sessions</li>
+                                <li>Candid Moments</li>
+                                <li>Video Recording</li>
+                                <li>Quick Delivery</li>
+                            </ul>
+                            <div class="price-tag">$499 - $1999</div>
+                            <button class="order-btn" onclick="openOrderModal('Corporate Event Photography')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Wedding Photography</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Pre-wedding Shoot</li>
+                                <li>Ceremony Coverage</li>
+                                <li>Cinematography</li>
+                                <li>Album Design</li>
+                                <li>Drone Shots</li>
+                                <li>Same Day Edit</li>
+                            </ul>
+                            <div class="price-tag">$999 - $4999</div>
+                            <button class="order-btn" onclick="openOrderModal('Wedding Photography')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional Services -->
+            <section id="graphic-design" class="services-category">
+                <h2 class="category-title">🎨 Graphic Design</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Logo Design</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>3 Unique Concepts</li>
+                                <li>Unlimited Revisions</li>
+                                <li>Vector Files</li>
+                                <li>Source Files</li>
+                                <li>Brand Guidelines</li>
+                                <li>Social Media Kit</li>
+                            </ul>
+                            <div class="price-tag">$199 - $599</div>
+                            <button class="order-btn" onclick="openOrderModal('Logo Design')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Social Media Graphics</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Post Designs</li>
+                                <li>Story Templates</li>
+                                <li>Cover Images</li>
+                                <li>Ad Creatives</li>
+                                <li>Banner Designs</li>
+                                <li>Animated Posts</li>
+                            </ul>
+                            <div class="price-tag">$49 - $299</div>
+                            <p class="price-note">Per design</p>
+                            <button class="order-btn" onclick="openOrderModal('Social Media Graphics')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="seo" class="services-category">
+                <h2 class="category-title">🔍 SEO Services</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>On-Page SEO</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Keyword Research</li>
+                                <li>Meta Tags Optimization</li>
+                                <li>Content Optimization</li>
+                                <li>Internal Linking</li>
+                                <li>Image Optimization</li>
+                                <li>URL Structure</li>
+                            </ul>
+                            <div class="price-tag">$499/month</div>
+                            <button class="order-btn" onclick="openOrderModal('On-Page SEO')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Off-Page SEO</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Link Building</li>
+                                <li>Guest Posts</li>
+                                <li>Social Bookmarking</li>
+                                <li>Directory Submission</li>
+                                <li>Brand Mentions</li>
+                                <li>Authority Building</li>
+                            </ul>
+                            <div class="price-tag">$599/month</div>
+                            <button class="order-btn" onclick="openOrderModal('Off-Page SEO')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="content-writing" class="services-category">
+                <h2 class="category-title">✍️ Content Writing</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Blog Writing</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>SEO Optimized</li>
+                                <li>Research Based</li>
+                                <li>Original Content</li>
+                                <li>Proper Formatting</li>
+                                <li>Images Included</li>
+                                <li>Meta Descriptions</li>
+                            </ul>
+                            <div class="price-tag">$50 - $200</div>
+                            <p class="price-note">Per post</p>
+                            <button class="order-btn" onclick="openOrderModal('Blog Writing')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Copywriting</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Sales Pages</li>
+                                <li>Email Sequences</li>
+                                <li>Ad Copies</li>
+                                <li>Product Descriptions</li>
+                                <li>Landing Pages</li>
+                                <li>Video Scripts</li>
+                            </ul>
+                            <div class="price-tag">$99 - $499</div>
+                            <button class="order-btn" onclick="openOrderModal('Copywriting')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="marketing" class="services-category">
+                <h2 class="category-title">📊 Digital Marketing</h2>
+                <div class="services-grid">
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Google Ads</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Campaign Setup</li>
+                                <li>Keyword Research</li>
+                                <li>Ad Creation</li>
+                                <li>Landing Page Setup</li>
+                                <li>Conversion Tracking</li>
+                                <li>Monthly Reports</li>
+                            </ul>
+                            <div class="price-tag">$499 + Ad Spend</div>
+                            <button class="order-btn" onclick="openOrderModal('Google Ads')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Facebook/Instagram Ads</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Audience Targeting</li>
+                                <li>Ad Creative</li>
+                                <li>A/B Testing</li>
+                                <li>Pixel Setup</li>
+                                <li>Retargeting</li>
+                                <li>Analytics</li>
+                            </ul>
+                            <div class="price-tag">$399 + Ad Spend</div>
+                            <button class="order-btn" onclick="openOrderModal('Social Media Ads')">Order Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-detailed-card">
+                        <div class="service-header">
+                            <h3>Email Marketing</h3>
+                        </div>
+                        <div class="service-body">
+                            <ul class="features-list">
+                                <li>Email Templates</li>
+                                <li>List Building</li>
+                                <li>Automation Setup</li>
+                                <li>Campaign Management</li>
+                                <li>A/B Testing</li>
+                                <li>Analytics</li>
+                            </ul>
+                            <div class="price-tag">$299/month</div>
+                            <button class="order-btn" onclick="openOrderModal('Email Marketing')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hiring Section -->
+            <section id="hiring" class="hiring-section">
+                <h2>Join Our Growing Team</h2>
+                <p style="margin-bottom: 2rem;">We're always looking for talented individuals to join our digital marketing family.</p>
+                
+                <div class="job-list" id="jobList">
+                    <div class="job-card">
+                        <h3>Video Editor</h3>
+                        <p>📍 Location: Remote</p>
+                        <p>💰 Salary: $40k - $60k</p>
+                        <p>📝 Experience with Premiere Pro & After Effects</p>
+                        <button class="apply-btn" onclick="applyForJob('Video Editor')">Apply Now</button>
+                    </div>
+                    
+                    <div class="job-card">
+                        <h3>Social Media Manager</h3>
+                        <p>📍 Location: Hybrid</p>
+                        <p>💰 Salary: $45k - $65k</p>
+                        <p>📝 Experience with major social platforms</p>
+                        <button class="apply-btn" onclick="applyForJob('Social Media Manager')">Apply Now</button>
+                    </div>
+                    
+                    <div class="job-card">
+                        <h3>Web Developer</h3>
+                        <p>📍 Location: Remote</p>
+                        <p>💰 Salary: $60k - $90k</p>
+                        <p>📝 Full stack developer with React experience</p>
+                        <button class="apply-btn" onclick="applyForJob('Web Developer')">Apply Now</button>
+                    </div>
+                    
+                    <div class="job-card">
+                        <h3>Graphic Designer</h3>
+                        <p>📍 Location: On-site</p>
+                        <p>💰 Salary: $45k - $65k</p>
+                        <p>📝 Adobe Creative Suite expert</p>
+                        <button class="apply-btn" onclick="applyForJob('Graphic Designer')">Apply Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" style="background: white; padding: 2rem; border-radius: 15px; margin-bottom: 3rem;">
+                <h2>Contact Us</h2>
+                <p style="margin: 1rem 0;">Ready to grow your business? Get in touch with us!</p>
+                
+                <form id="contactForm" style="max-width: 600px;">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <p>&copy; 2024 DigiMark Pro. All rights reserved.</p>
+                <p style="margin-top: 1rem;">Email: info@digimarkpro.com | Phone: +1 (555) 123-4567</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // User Data
+        const users = [
+            { email: 'admin@digimark.com', password: 'password123', name: 'Admin User', type: 'admin' },
+            { email: 'user@test.com', password: 'user123', name: 'Test User', type: 'user' }
+        ];
+
+        // Current logged in user
+        let currentUser = null;
+
+        // Orders array
+        let userOrders = [];
+
+        // Load orders from localStorage
+        function loadOrders() {
+            const savedOrders = localStorage.getItem('userOrders');
+            if (savedOrders) {
+                userOrders = JSON.parse(savedOrders);
+            }
+        }
+
+        // Save orders to localStorage
+        function saveOrders() {
+            localStorage.setItem('userOrders', JSON.stringify(userOrders));
+        }
+
+        // Login Modal
+        const modal = document.getElementById('loginModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const closeBtn = document.querySelector('.close');
+
+        loginBtn.onclick = function(e) {
+            e.preventDefault();
+            modal.classList.add('active');
+        }
+
+        closeBtn.onclick = function() {
+            modal.classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Login Form
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('loginMessage');
+
+            // Find user
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                currentUser = user;
+                messageDiv.innerHTML = '<div class="alert success">Login successful! Redirecting...</div>';
+                
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    updateUIForLoggedInUser();
+                    document.getElementById('loginForm').reset();
+                }, 1500);
+            } else {
+                messageDiv.innerHTML = '<div class="alert error">Invalid email or password!</div>';
+            }
+        }
+
+        // Update UI after login
+        function updateUIForLoggedInUser() {
+            if (currentUser) {
+                document.getElementById('userDisplay').innerHTML = `Welcome, ${currentUser.name} <button class="logout-btn" onclick="logout()">Logout</button>`;
+                document.getElementById('userDisplay').classList.add('active');
+                document.getElementById('dashboard').classList.add('active');
+                document.getElementById('userName').textContent = currentUser.name;
+                loginBtn.style.display = 'none';
+                
+                // Load user orders
+                loadOrders();
+                updateDashboardOrders();
+            }
+        }
+
+        // Update dashboard with orders
+        function updateDashboardOrders() {
+            if (!currentUser) return;
+            
+            const userSpecificOrders = userOrders.filter(order => order.userEmail === currentUser.email);
+            
+            document.getElementById('activeOrders').textContent = userSpecificOrders.filter(o => o.status === 'pending').length;
+            document.getElementById('completedOrders').textContent = userSpecificOrders.filter(o => o.status === 'completed').length;
+            
+            const totalSpent = userSpecificOrders.reduce((sum, order) => {
+                const price = parseFloat(order.price) || 0;
+                return sum + price;
+            }, 0);
+            document.getElementById('totalSpent').textContent = '$' + totalSpent;
+            
+            const orderHistory = document.getElementById('orderHistory');
+            if (userSpecificOrders.length === 0) {
+                orderHistory.innerHTML = '<p>No orders yet. Start by ordering a service!</p>';
+            } else {
+                orderHistory.innerHTML = userSpecificOrders.map(order => `
+                    <div class="order-item">
+                        <div>
+                            <strong>${order.service}</strong> - ${order.package} package
+                            <br>
+                            <small>Ordered on: ${new Date(order.date).toLocaleDateString()}</small>
+                        </div>
+                        <div>
+                            <span class="order-status ${order.status === 'pending' ? 'status-pending' : 'status-completed'}">${order.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Logout function
+        function logout() {
+            currentUser = null;
+            document.getElementById('userDisplay').classList.remove('active');
+            document.getElementById('dashboard').classList.remove('active');
+            loginBtn.style.display = 'inline-block';
+        }
+
+        // Order Modal functions
+        const orderModal = document.getElementById('orderModal');
+        
+        function openOrderModal(serviceName) {
+            if (!currentUser) {
+                alert('Please login first to place an order!');
+                modal.classList.add('active');
+                return;
+            }
+            
+            document.getElementById('modalServiceTitle').textContent = `Order: ${serviceName}`;
+            document.getElementById('serviceName').value = serviceName;
+            orderModal.classList.add('active');
+        }
+
+        function closeOrderModal() {
+            orderModal.classList.remove('active');
+            document.getElementById('orderForm').reset();
+        }
+
+        // Order Form
+        document.getElementById('orderForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            if (!currentUser) {
+                alert('Please login first!');
+                closeOrderModal();
+                modal.classList.add('active');
+                return;
+            }
+            
+            const order = {
+                id: Date.now(),
+                userEmail: currentUser.email,
+                service: document.getElementById('serviceName').value,
+                customerName: document.getElementById('customerName').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                package: document.getElementById('servicePackage').value,
+                details: document.getElementById('projectDetails').value,
+                budget: document.getElementById('budget').value,
+                status: 'pending',
+                date: new Date().toISOString(),
+                price: Math.floor(Math.random() * 500) + 100 // Random price for demo
+            };
+            
+            userOrders.push(order);
+            saveOrders();
+            
+            document.getElementById('orderMessage').innerHTML = '<div class="alert success">Order placed successfully!</div>';
+            
+            setTimeout(() => {
+                closeOrderModal();
+                updateDashboardOrders();
+                alert(`Thank you for your order! We'll contact you within 24 hours.`);
+            }, 1500);
+        }
+
+        // Apply for job
+        function applyForJob(jobTitle) {
+            if (!currentUser) {
+                alert('Please login first to apply for this position!');
+                modal.classList.add('active');
+                return;
+            }
+            
+            alert(`Thank you for applying for ${jobTitle} position!\nWe will review your application and contact you soon.`);
+            
+            // Store application in localStorage
+            let applications = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+            applications.push({
+                user: currentUser.email,
+                userName: currentUser.name,
+                job: jobTitle,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('jobApplications', JSON.stringify(applications));
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('message').value;
+            
+            alert(`Thank you ${name}! We have received your message and will get back to you soon.`);
+            
+            // Store contact in localStorage
+            let contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+            contacts.push({
+                name: name,
+                email: email,
+                message: message,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+            
+            this.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        window.onload = function() {
+            loadOrders();
+        }
+    </script>
+</body>
+</html>
